@@ -144,6 +144,9 @@
         "Grey"       : "var(Grey600)"       ,
         "BlueGrey"   : "var(BlueGrey600)"   ,
         // built-in
+        // do not use perfect black as it may be the same background color
+        // with the one used in "add_region()" and cause failing to
+        // change the foreground color
         "--background": "var(Black)",
         "--foreground": "var(White)",
         // "--accent": "var(White)",
@@ -394,13 +397,19 @@
             "name": "Access Operator",
             "scope": "punctuation.accessor",
         },
+        {
+            "foreground": "var(Pink)",
+            "name": "Annotation Punctuation",
+            "scope": "punctuation.definition.annotation",
+        },
         ////////////
         // Others //
         ////////////
         {
             "foreground": "var(Pink)",
-            "name": "JS - Arrow Function",
-            "scope": "storage.type.function.arrow.js",
+            "font_style": "bold",
+            "name": "JS - Async keyword",
+            "scope": "keyword.declaration.async.js",
         },
         {
             "foreground": "var(DeepPurple300)",
@@ -413,15 +422,15 @@
             "scope": "meta.function-call.generic.python",
         },
         {
-            "foreground": "var(Pink)",
-            "name": "Python - Annotation Punctuation",
-            "scope": "punctuation.definition.annotation.python",
-        },
-        {
             "font_style": "italic",
             "foreground": "var(Orange)",
             "name": "SCSS - Variable in Double Quotes",
             "scope": "variable.scss",
+        },
+        {
+            "foreground": "var(Pink)",
+            "name": "CSS - Unit",
+            "scope": "constant.numeric.suffix.css",
         },
         {
             "font_style": "bold",
@@ -439,6 +448,18 @@
             "foreground": "var(Pink)",
             "name": "Sublime Settings - JSON Key",
             "scope": "meta.mapping.key.json string.quoted.double.json",
+        },
+        {
+            "foreground": "var(Green)",
+            "font_style": "",
+            "name": "Sublime Settings - JSON Key Namespace",
+            "scope": "keyword.other.namespace.sublime-settings",
+        },
+        {
+            "foreground": "var(--foreground)",
+            "font_style": "",
+            "name": "Sublime Settings - JSON Key Namespace Separator",
+            "scope": "punctuation.separator.namespace.sublime-settings",
         },
         //////////////
         // Markdown //
@@ -598,8 +619,8 @@
         },
         {
             "foreground": "var(Pink)",
-            "name": "PHP - Function Return Type Separator",
-            "scope": "meta.function.return-type.php punctuation.separator.php",
+            "name": "PHP - Type Separator",
+            "scope": "punctuation.separator.type.union.php | punctuation.separator.type.intersection.php",
         },
         {
             "foreground": "var(--foreground)",
@@ -637,6 +658,14 @@
             "foreground": "var(Pink)",
             "name": "PHP - RegExp - Keyword Punctuations",
             "scope": "punctuation.definition.group.begin.regexp | punctuation.definition.group.end.regexp | punctuation.definition.character-class.begin.regexp | punctuation.definition.character-class.end.regexp",
+        },
+        /////////
+        // LUA //
+        /////////
+        {
+            "foreground": "var(Pink)",
+            "name": "LUA - key-value separator",
+            "scope": "punctuation.separator.key-value.lua",
         },
         ///////////
         // Shell //
@@ -911,6 +940,15 @@
             "foreground": "var(--foreground)",
             "name": "SublimeLinter Gutter Mark",
             "scope": "sublimelinter.gutter-mark",
+        },
+        ///////////////////////////
+        // semantic highlihgting //
+        ///////////////////////////
+        {
+            // the background should be the same with color scheme's global background
+            "background": "#000101",
+            "name": "LSP semantic highlighting background color",
+            "scope": "meta.semantic-token.lsp",
         },
     ],
 }
